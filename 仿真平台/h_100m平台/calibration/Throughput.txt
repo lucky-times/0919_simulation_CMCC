@@ -1,0 +1,3 @@
+no interference
+DL average per cell: 120 DL edge per cell: 120
+UL average per cell: 80 UL edge per cell: 80

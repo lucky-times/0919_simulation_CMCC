@@ -1,0 +1,8 @@
+DL average
+ 
+DL edge
+ 
+UL average
+ 
+UL edge
+ 

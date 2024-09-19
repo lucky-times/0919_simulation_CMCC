@@ -1,0 +1,24 @@
+1. In Sec. II, the paper discusses the model's assumptions and its implications on low-altitude network design. However, how robust is this model against variations in environmental conditions which may not exactly fit the theoretical assumptions made?
+面对环境变化，模型的鲁棒性需要增强
+
+
+2. In Sec. III, you describe the application of the model through linear and cellular networking scenarios. Can you elaborate on how the model adapts to different networking topologies beyond these examples?
+除了线性网络和蜂窝网络场景，模型如何适应其他的网络拓扑？
+主服务小区、干扰服务小区距离倍数关系
+
+3. In Sec. IV, the validation of the theoretical model through simulation is presented. Could you clarify the range of scenarios for which the simulation results are applicable? Are there any limitations in the types of network configurations or environmental conditions?
+澄清一下仿真结果适用的场景范围，对于网络配置和环境条件有其他限制吗？
+
+
+4. In the Conclusion (Sec. V), future work is briefly mentioned. Could more detail be provided on the specific next steps planned to address the current model’s limitations?
+对于未来工作，描述一下如何解决现有网络的限制
+
+
+5. In the Introduction, the impact of antenna design on interference is highlighted. How significantly do antenna pattern variations affect the accuracy of interference predictions?
+天线模式的差异如何影响干扰预测的精度
+
+6. Throughout the paper, the impact of physical obstacles in low-altitude environments is discussed. Could you provide a more detailed analysis of how urban topographies influence the model's predictions?
+物理障碍物对模型的影响，提供一个更加详细的分析
+
+7. UAV networks are a significant component of low-altitude networks, so the authors should provide some state-of-the-art information on this topic, such as: "Evaluating AoI-centric HARQ protocols for UAV networks" and "Blockchain-Aided Secure Access Control for UAV Computing Networks". Just to name a few.
+提供最新的信息关于低空网络中的UAV，例如UAV网络中的HARQ协议、区块链辅助的安全控制

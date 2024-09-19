@@ -1,0 +1,24 @@
+15
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 365.6048 BS to BS edge per cell: 199.7702
+20
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 372.7589 BS to BS edge per cell: 236.5507
+25
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 377.35 BS to BS edge per cell: 252.928
+30
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 380.1979 BS to BS edge per cell: 262.8665
+35
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 381.8648 BS to BS edge per cell: 264.0829
+40
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 382.7546 BS to BS edge per cell: 266.0923
+45
+UE to UE average per cell: 897.0288 UE to UE edge per cell: 321.0404
+BS to BS average per cell: 383.1625 BS to BS edge per cell: 268.5949
+no interference
+UE to UE average per cell: 904.2828 UE to UE edge per cell: 338.2886
+BS to BS average per cell: 383.3988 BS to BS edge per cell: 268.6228
