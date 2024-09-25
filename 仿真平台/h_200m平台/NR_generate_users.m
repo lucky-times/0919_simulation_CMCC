@@ -150,37 +150,19 @@ if ~no_UEs
     end
     networkPathlossMap.num_first_UEs = num_first_UEs;
     num_first_sectors = networkPathlossMap.num_first_sectors;
+    %用于3dB切换管理
     last_idx = [];
     for u_ = 1:length(UEs)     
         a = 1;
         % 根据基站服务的区域分配服务基站
-        id_x = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UEs(u_),last_idx);   
+        [id_x, interfer_sector_id] = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UEs(u_),last_idx);   
         last_idx = id_x;
        % 将UE归附于相应的小区
         eNodeB_sectors(id_x).attachUser(UEs(u_));
+        for i = 1:length(interfer_sector_id)
+            eNodeB_sectors(interfer_sector_id(i)).neighboring_Interfer(UEs(u_));
+        end
         UE_positions_m(u_,:) = UEs(u_).pos;
-        
-        % 确定统计哪些UE
-%         if SYS_config.isWraparound
-%             compute_only_UEs_from_this_eNodeBs = 1:57;% 只统计被1到19号基站（1到57号小区）服务的UE，下面类似
-%         else
-%             if SYS_config.isDouble
-%                 if SYS_config.isS2F % 异构中大场景到小场景与小场景到大场景
-%                     compute_only_UEs_from_this_eNodeBs = 1:num_first_sectors;% 求大场景对小场景的干扰
-%                 else
-%                     compute_only_UEs_from_this_eNodeBs = num_first_sectors+1:length(eNodeB_sectors);% 求小场景对大场景的干扰
-%                 end
-%             else
-%                 compute_only_UEs_from_this_eNodeBs = 1:length(eNodeB_sectors);
-%             end
-%         end
-%         if isempty(find(UEs(u_).attached_eNodeB.eNodeB_id == compute_only_UEs_from_this_eNodeBs,1))
-%             % 不统计该UE
-%             UEs(u_).deactivate_UE = true;%关闭UE统计
-%         else
-%             % 统计该UE
-%             UEs(u_).deactivate_UE = false;
-%         end、
         UEs(u_).deactivate_UE = false;
     end
 

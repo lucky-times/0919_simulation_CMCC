@@ -165,6 +165,17 @@ else
                     str = sprintf('UAV服务小区（仿真数据）, h = %dm, r = %dm', SYS_config.UE_height, SYS_config.UE_r);
                 end
                 title(str)
+                global interfer_sector_num
+                % 统计UE的前8个干扰小区PCI
+                interfering_cell_PCI = zeros(length(UEs), interfer_sector_num);
+                for i = 1:length(UEs)
+                    interfering_sectors = UEs(i).neighboring_Interference_eNodeB;
+                    for j = 1:length(interfering_sectors)
+                        interfering_cell_PCI(i, j) = interfering_sectors(j).eNodeB_id;
+                    end
+                end
+                str = sprintf('PCI_%dm_Simulated.csv', SYS_config.UE_r);
+                csvwrite(str, interfering_cell_PCI);
                 switch(SYS_config.UE_r)
                 case 100
                     y_lim = [-8,15];
@@ -187,7 +198,10 @@ else
 
                 rng(0);
                 fig1 = figure;
+%                 plot_Sinr = SINR2;
                 plot_Sinr = (SINR2 - mean(SINR2))*scale_factor + mean(SINR2);
+                str_save_variable_name = sprintf('simulated_data_%d.mat', SYS_config.UE_r);
+                save(str_save_variable_name, 'plot_Sinr');
                 plot(1:length(UEs), plot_Sinr,LineWidth=2);%+10+sqrt(10)*randn(size(SINR2))
                 xlim([0,length(UEs)]);
                 ylim(y_lim);

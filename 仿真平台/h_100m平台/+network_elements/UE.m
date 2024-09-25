@@ -10,6 +10,7 @@ classdef UE < handle
         attached_sector_idx   % UE归属的eNode站址·
         attached_eNodeB       % UE归属的eNodeB
         height                % UE的高度
+        neighboring_Interference_eNodeB %UE邻区干扰的eNodeB
         orientation           % UE的旋转角
         antenna               % UE归属的eNodeB
         walking_model         % UE的运动模型

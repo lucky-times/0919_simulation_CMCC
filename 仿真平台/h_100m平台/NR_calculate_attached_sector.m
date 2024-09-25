@@ -1,4 +1,4 @@
-function [eNodeB_sector_id] = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UE,last_idx)
+function [eNodeB_sector_id, interfer_sector_id] = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UE,last_idx)
 %UNTITLED3 此处提供此函数的摘要
 %   此处提供详细说明
 UE_pos = UE.pos;
@@ -54,14 +54,20 @@ end
 pathLoss = couplingLoss' - elementGain;
 pathloss2 = reshape(pathLoss, [numel(pathLoss), 1]);
 [loss,  index] = sort(pathloss2);%按照升序排列，选择PL最小的，即第1个索引号
+global interfer_sector_num %记录的干扰扇区的数目
+interfer_sector_num = 8;
 if isempty(last_idx)
     eNodeB_sector_id = index(1);
+    interfer_sector_id = index(2:interfer_sector_num+1);
 else
     % 判断是否满足小区切换的条件，下一个小区的路损小于该小区路损3dB
     if pathloss2(last_idx)-pathloss2(index(1))<=3
         eNodeB_sector_id = last_idx;
+        interfer_sector_id = index(1:interfer_sector_num+1);
+        interfer_sector_id(interfer_sector_id == last_idx) = [];%删除eNodeB_sector_id标号
     else
         eNodeB_sector_id = index(1);
+        interfer_sector_id = index(2:interfer_sector_num+1);
     end
 end
 

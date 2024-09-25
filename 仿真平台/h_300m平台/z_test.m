@@ -50,7 +50,7 @@ SYS_config.n_UE_served_per_BS = 1; % 每个BS同一时间服务的UE数
 
 SYS_config.antenna.antenna_gain_pattern = 'NRAntennaBeamforming'; %波束赋型的类型（可以在此处增加扩展其他的波束赋型图案）
 SYS_config.UE_height = 300;%UAV飞行高度 100 200 300 500
-SYS_config.UE_r = 800; %UAV距中心基站的极径  100 300 500 800 1200
+SYS_config.UE_r = 1200; %UAV距中心基站的极径  100 300 500 800 1200
 str = sprintf("UAV 飞行高度h=%d, 极径r=%d", SYS_config.UE_height, SYS_config.UE_r);
 disp(str)
 % SYS_config.eNodeB_pos = zeros(19,2);

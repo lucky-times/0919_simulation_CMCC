@@ -10,6 +10,7 @@ classdef UE < handle
         attached_sector_idx   % UE归属的eNode站址·
         attached_eNodeB       % UE归属的eNodeB
         height                % UE的高度
+        neighboring_Interference_eNodeB %UE邻区干扰的eNodeB
         orientation           % UE的旋转角
         antenna               % UE归属的eNodeB
         walking_model         % UE的运动模型
@@ -316,7 +317,7 @@ classdef UE < handle
                 reduction_factor = 10*log10(beta);
                 BS_element_pattern = zeros(size(vertical_angle_grid_el));
                 for i = 1 : length(vertical_angle_grid_el)
-                    BS_element_pattern(i) = obj.attached_eNodeB.antenna.elementPattern(vertical_angle_grid_el(i), horizontal_angle_grid_s(i), SYS_config.tilt) + reduction_factor ;%均值为-10，方差为10的随机数，正态分布   + sqrt(10)*randn()-10
+                    BS_element_pattern(i) = obj.attached_eNodeB.antenna.elementPattern(vertical_angle_grid_el(i), horizontal_angle_grid_s(i), SYS_config.tilt) +  reduction_factor;% reduction_factor 均值为-10，方差为10的随机数，正态分布   + sqrt(10)*randn()-10
                 end
 %                 BS_element_pattern = obj.attached_eNodeB.antenna.elementPattern(vertical_angle_grid_el, horizontal_angle_grid_s, SYS_config.tilt);
                 UE_antenna_gain_1=obj.antenna.elementPattern(vertical_angle_grid_el_ue,phi_1);

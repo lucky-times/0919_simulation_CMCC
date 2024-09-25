@@ -151,10 +151,13 @@ if ~no_UEs
     for u_ = 1:length(UEs)     
         a = 1;
         % 根据基站服务的区域分配服务基站
-        id_x = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UEs(u_),last_idx);   
+        [id_x, interfer_sector_id] = NR_calculate_attached_sector(SYS_config, eNodeB_sites,eNodeB_sectors, UEs(u_),last_idx);   
         last_idx = id_x;
        % 将UE归附于相应的小区
         eNodeB_sectors(id_x).attachUser(UEs(u_));
+        for i = 1:length(interfer_sector_id)
+            eNodeB_sectors(interfer_sector_id(i)).neighboring_Interfer(UEs(u_));
+        end
         UE_positions_m(u_,:) = UEs(u_).pos;
         
         % 确定统计哪些UE

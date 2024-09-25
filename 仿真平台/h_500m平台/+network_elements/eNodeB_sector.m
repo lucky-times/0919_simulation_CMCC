@@ -93,14 +93,21 @@ classdef eNodeB_sector < handle
                     obj.attached_UEs_vector = [obj.attached_UEs_vector user];
                     obj.attached_UEs        = obj.attached_UEs + 1;
                 end
-            end
-            
+            end            
             % UE在这里attach上了
             user.attached_sector_idx = obj.id;
             user.attached_site       = obj.parent_eNodeB;
             user.attached_eNodeB     = obj;
         end
-        
+        %% 观察UE的干扰小区
+        function neighboring_Interfer(obj, user)
+            if isempty(user.neighboring_Interference_eNodeB)
+                user.neighboring_Interference_eNodeB = obj;
+            else
+                user.neighboring_Interference_eNodeB = [user.neighboring_Interference_eNodeB obj];
+            end
+        end
+
         %% 将指定用户从小区中分离
         function deattachUser(obj,user)
             if ~isempty(obj.attached_UEs_vector)
